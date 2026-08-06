@@ -113,7 +113,7 @@
 <body>
   <div class="container">
     <h1>Pebbl 개인정보 처리방침</h1>
-    <p class="meta">시행일: 2026년 7월 20일 | 최종 수정일: 2026년 7월 20일</p>
+    <p class="meta">시행일: 2026년 8월 13일 | 최종 수정일: 2026년 8월 6일</p>
     <p class="intro">Pebbl(이하 "앱")을 운영하는 헥사고널프로젝트(Hexagonal Project)(이하 "운영자")는 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.</p>
 
     <div class="section">
@@ -146,9 +146,10 @@
       <ul>
         <li>운동 세션 기록(날짜, 시간, 난이도별 완등 결과)</li>
         <li>포인트 적립 내역, 랭킹 정보</li>
-        <li>앱 오류 로그(크래시 정보)</li>
+        <li>오류 진단 정보(기기 모델, OS 버전, 앱 버전, 오류 발생 위치·스택 트레이스)</li>
       </ul>
       <div class="note">운동 기록은 단말기 내 로컬 데이터베이스(SQLite)에 저장되며, 로그인 시 Supabase 서버에 클라우드 백업됩니다. 백업 데이터에는 운동 세션(날짜, 시간, 암장명, 난이도별 완등 결과), 등록 암장 정보(이름, 아이콘, 난이도 설정)가 포함됩니다.</div>
+      <div class="note"><strong>오류 진단 정보</strong>는 앱 오류 발생 시 원인 파악을 위해 자동으로 수집됩니다. 이름·이메일·계정 식별자 등 개인을 특정할 수 있는 정보는 수집하지 않으며, 수집된 정보는 오류 수정 목적으로만 사용됩니다.</div>
     </div>
 
     <div class="section">
@@ -163,6 +164,7 @@
         <tr><td>신고 기록</td><td>처리 완료 후 1년</td><td>부정 이용 방지</td></tr>
         <tr><td>운동 기록(로컬 SQLite)</td><td>앱 삭제 시까지 (로컬 저장)</td><td>—</td></tr>
         <tr><td>운동 기록 클라우드 백업</td><td>회원 탈퇴 시까지</td><td>이용자 동의</td></tr>
+        <tr><td>오류 진단 정보(크래시 리포트)</td><td>수집일로부터 90일</td><td>서비스 개선·오류 수정</td></tr>
       </table>
       <p>회원 탈퇴 시 해당 이용자의 개인정보는 지체 없이 파기됩니다. 다만, 관계 법령에 의하여 보존할 필요가 있는 경우 해당 법령에서 정한 기간 동안 보존합니다.</p>
       <ul>
@@ -186,6 +188,7 @@
     <div class="section">
       <h2>제5조 (개인정보의 국외 이전)</h2>
       <p>운영자는 서비스 제공을 위하여 다음과 같이 개인정보를 국외로 이전하고 있습니다(「개인정보 보호법」 제28조의8).</p>
+      <h3>1. Supabase, Inc.</h3>
       <table>
         <tr><th>항목</th><th>내용</th></tr>
         <tr><td>이전받는 자</td><td>Supabase, Inc. (미국)</td></tr>
@@ -196,6 +199,18 @@
         <tr><td>보유·이용 기간</td><td>회원 탈퇴 또는 서비스 계약 종료 시까지</td></tr>
       </table>
       <div class="note">Supabase는 AWS(Amazon Web Services) 클라우드 인프라를 기반으로 운영되며, 데이터 암호화(전송 시 TLS, 저장 시 AES-256) 등 보호 조치를 적용하고 있습니다.</div>
+
+      <h3>2. Functional Software, Inc. (Sentry)</h3>
+      <table>
+        <tr><th>항목</th><th>내용</th></tr>
+        <tr><td>이전받는 자</td><td>Functional Software, Inc. (dba Sentry, 미국)</td></tr>
+        <tr><td>연락처</td><td>compliance@sentry.io</td></tr>
+        <tr><td>이전 목적</td><td>앱 오류(크래시) 수집 및 원인 분석</td></tr>
+        <tr><td>이전되는 항목</td><td>오류 진단 정보(기기 모델, OS 버전, 앱 버전, 오류 발생 위치·스택 트레이스)</td></tr>
+        <tr><td>이전 국가</td><td>미국</td></tr>
+        <tr><td>보유·이용 기간</td><td>수집일로부터 90일</td></tr>
+      </table>
+      <div class="note">Sentry로 전송되는 오류 진단 정보에는 <strong>이름·이메일·계정 식별자 등 개인을 특정할 수 있는 정보가 포함되지 않습니다.</strong> 운영자는 Sentry의 개인정보 자동 수집 옵션을 비활성화하고, 이용자 식별자를 전송하지 않도록 설정하여 운영하고 있습니다.</div>
     </div>
 
     <div class="section">
@@ -207,6 +222,7 @@
         <tr><td>카카오 (Kakao Corp.)</td><td>소셜 로그인 인증</td><td>서비스 이용 기간</td></tr>
         <tr><td>구글 (Google LLC)</td><td>소셜 로그인 인증</td><td>서비스 이용 기간</td></tr>
         <tr><td>Apple Inc.</td><td>소셜 로그인 인증 (Sign in with Apple)</td><td>서비스 이용 기간</td></tr>
+        <tr><td>Functional Software, Inc. (Sentry)</td><td>앱 오류(크래시) 수집·분석</td><td>수집일로부터 90일</td></tr>
       </table>
       <p>위탁 업무의 내용이나 수탁자가 변경될 경우에는 지체 없이 본 개인정보 처리방침을 통하여 공개하겠습니다.</p>
     </div>
@@ -297,7 +313,13 @@
 
     <div class="section">
       <h2>부칙</h2>
-      <p>본 방침은 2026년 7월 20일부터 시행합니다.</p>
+      <p>본 방침은 2026년 8월 13일부터 시행합니다.</p>
+      <p>종전의 개인정보 처리방침(2026년 7월 20일 시행)은 본 방침의 시행일부터 대체됩니다.</p>
+      <h3>개정 이력</h3>
+      <ul>
+        <li><strong>2026년 8월 13일 시행</strong>: 앱 오류 진단 정보(크래시 리포트) 수집 항목 구체화, 오류 분석 서비스(Sentry)의 국외 이전 및 처리 위탁 사항 추가</li>
+        <li><strong>2026년 7월 20일 시행</strong>: 최초 제정</li>
+      </ul>
     </div>
 
     <div class="footer">
