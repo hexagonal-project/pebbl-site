@@ -2,37 +2,255 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=./privacy.html">
-  <link rel="canonical" href="https://hexagonal-project.github.io/pebbl-site/privacy.html">
-  <meta name="robots" content="noindex">
-  <title>Pebbl</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Pebbl — 볼더링 기록이 예뻐지는 앱</title>
+  <meta name="description" content="오늘의 완등은 인포그래픽으로, 한 달·한 해는 카드 한 장으로. 볼더링 기록을 남기고, 꾸미고, 스토리에 올리세요.">
+  <meta property="og:title" content="Pebbl — 볼더링 기록이 예뻐지는 앱">
+  <meta property="og:description" content="오늘의 완등은 인포그래픽으로, 한 달·한 해는 카드 한 장으로.">
+  <meta property="og:image" content="https://hexagonal-project.github.io/pebbl-site/assets/card-year.png">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="./assets/icon.png">
+  <link rel="apple-touch-icon" href="./assets/icon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <style>
+    /* ── 팔레트: 앱 design.md 그대로 (웜 화이트 · 코랄 · 소프트 블랙 · 웜 그레이 · 민트 · 베이지) */
+    :root {
+      --bg: #FFF8F0;
+      --ink: #2D2D2D;
+      --gray: #8E8E93;
+      --gray-2: #A89F96;
+      --coral: #FF8A80;
+      --coral-deep: #F2726A;
+      --coral-tint: #FCE6DE;
+      --line: #EFE2D4;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Pretendard', sans-serif;
-      background: #FAFAFA;
-      color: #2D2D2D;
+      font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+      overflow-x: hidden;
     }
-    .box { text-align: center; padding: 24px; }
-    p { margin: 0 0 16px; font-size: 15px; color: #6B6B6B; }
-    ul { list-style: none; padding: 0; margin: 0; line-height: 2; }
-    a { color: #2D2D2D; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+    /* 그리드 자식의 min-width:auto가 가로 스크롤 영역(.fan) 폭만큼 열을 넓혀 페이지가 넘친다 */
+    .hero .wrap > *, .section .wrap > * { min-width: 0; }
+
+    /* ── 상단 바 */
+    .nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255, 248, 240, 0.86);
+      backdrop-filter: saturate(160%) blur(10px);
+      -webkit-backdrop-filter: saturate(160%) blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .brand { display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 19px; letter-spacing: -0.2px; }
+    .brand img { width: 30px; height: 30px; border-radius: 8px; }
+    .nav-cta {
+      font-size: 14px; font-weight: 700; color: var(--coral-deep);
+      background: var(--coral-tint); padding: 8px 14px; border-radius: 999px;
+    }
+
+    /* ── 히어로 */
+    .hero { padding: 72px 0 40px; }
+    .hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; }
+    .eyebrow { font-size: 14px; font-weight: 700; color: var(--coral-deep); letter-spacing: 0.2px; margin: 0 0 14px; }
+    h1 { font-size: clamp(34px, 5vw, 52px); line-height: 1.18; letter-spacing: -0.8px; margin: 0 0 18px; font-weight: 800; }
+    .lead { font-size: 18px; color: var(--gray); margin: 0 0 30px; max-width: 30em; }
+    .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 14px 22px; border-radius: 999px; font-weight: 700; font-size: 16px;
+      transition: transform .12s ease, opacity .12s ease;
+    }
+    .btn:active { transform: scale(.98); }
+    .btn-primary { background: var(--ink); color: #fff; }
+    .btn-primary svg { width: 18px; height: 18px; fill: #fff; }
+    .btn-ghost { color: var(--ink); background: #fff; border: 1px solid var(--line); }
+    .cta-note { font-size: 13px; color: var(--gray-2); margin: 12px 0 0; }
+
+    /* 카드 세 장 — 살짝 부채꼴. 카드가 곧 제품이라 장식 없이 그대로 */
+    .fan { position: relative; height: 560px; }
+    .fan img {
+      position: absolute; width: 270px; border-radius: 18px;
+      box-shadow: 0 18px 50px rgba(45, 45, 45, 0.14);
+      border: 1px solid rgba(45, 45, 45, 0.06);
+    }
+    .fan .c1 { left: -3%;  top: 70px; transform: rotate(-8deg); z-index: 1; }
+    .fan .c2 { left: 50%;  top: 0;    transform: translateX(-50%); z-index: 3; }
+    .fan .c3 { right: -3%; top: 70px; transform: rotate(8deg);  z-index: 2; }
+
+    /* ── 섹션 공통 */
+    .section { padding: 72px 0; }
+    .section + .section { border-top: 1px solid var(--line); }
+    .section .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .section.flip .copy { order: 2; }
+    h2 { font-size: clamp(26px, 3.4vw, 36px); line-height: 1.22; letter-spacing: -0.5px; margin: 0 0 14px; font-weight: 800; }
+    .copy p { font-size: 17px; color: var(--gray); margin: 0 0 22px; }
+    .points { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+    .points li { display: flex; gap: 12px; align-items: flex-start; font-size: 15.5px; }
+    .points .dot {
+      flex: none; width: 26px; height: 26px; border-radius: 9px; background: var(--coral-tint);
+      display: grid; place-items: center; margin-top: 1px;
+    }
+    .points .dot svg { width: 14px; height: 14px; stroke: var(--coral-deep); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .points b { color: var(--ink); font-weight: 700; }
+
+    /* 폰 프레임 — 얇은 테두리 하나. 실제 스크린샷이 주인공 */
+    .phones { display: flex; justify-content: center; gap: 22px; }
+    .phone {
+      width: 250px; border-radius: 34px; overflow: hidden;
+      border: 1px solid rgba(45,45,45,.10); background: #fff;
+      box-shadow: 0 16px 44px rgba(45,45,45,.12);
+    }
+    .phone.sm { width: 220px; margin-top: 48px; }
+
+    /* ── 마무리 */
+    .end { padding: 80px 0 88px; text-align: center; }
+    .end img { width: 116px; margin: 0 auto 18px; }
+    .end h2 { margin-bottom: 10px; }
+    .end p { color: var(--gray); margin: 0 0 26px; }
+    .end .cta { justify-content: center; }
+
+    footer { border-top: 1px solid var(--line); padding: 28px 0 44px; font-size: 13px; color: var(--gray-2); }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; justify-content: space-between; }
+    footer nav { display: flex; flex-wrap: wrap; gap: 16px; }
+    footer a:hover { color: var(--ink); }
+
+    @media (max-width: 860px) {
+      .hero { padding: 44px 0 24px; }
+      .hero .wrap, .section .wrap { grid-template-columns: 1fr; gap: 28px; }
+      .section.flip .copy { order: -1; }
+      .fan { height: auto; display: flex; gap: 12px; overflow-x: auto; padding: 8px 0 20px; scroll-snap-type: x mandatory; }
+      .fan img { position: static; transform: none !important; width: 220px; flex: none; scroll-snap-align: center; }
+      .phones { gap: 14px; }
+      .phone { width: 46%; }
+      .phone.sm { width: 46%; margin-top: 36px; }
+      .lead { font-size: 16.5px; }
+      .lead br { display: none; }
+      .nav .wrap { height: 56px; }
+    }
   </style>
 </head>
 <body>
-  <div class="box">
-    <p>페이지를 이동하고 있습니다.</p>
-    <ul>
-      <li><a href="./privacy.html">개인정보 처리방침</a></li>
-      <li><a href="./terms.html">이용약관</a></li>
-      <li><a href="./community-guidelines.html">커뮤니티 가이드라인</a></li>
-      <li><a href="./support.html">고객지원</a></li>
-    </ul>
-  </div>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="./"><img src="./assets/icon.png" alt="">Pebbl</a>
+      <a class="nav-cta" href="https://apps.apple.com/kr/app/id6793093845">App Store</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">볼더링 기록 앱</p>
+        <h1>볼더링 기록이<br>예뻐지는 앱</h1>
+        <p class="lead">오늘의 완등은 인포그래픽으로, 한 달·한 해는 카드 한 장으로. <br>기록하고, 꾸미고, 스토리에 올리세요.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://apps.apple.com/kr/app/id6793093845">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.7c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.6-1-2.6-3.8zM14 5.6c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>
+            App Store에서 받기
+          </a>
+          <a class="btn btn-ghost" href="https://play.google.com/apps/testing/com.hxp.pebbl">Android 테스트 참여</a>
+        </div>
+        <p class="cta-note">iOS 정식 출시 · Android는 비공개 테스트 중이에요</p>
+      </div>
+      <div class="fan" aria-label="Pebbl 돌아보기 카드 예시">
+        <img class="c1" src="./assets/card-month.png" alt="한 달 돌아보기 카드 — 달력에 다닌 암장이 칩으로 채워진다">
+        <img class="c2" src="./assets/card-year.png" alt="한 해 돌아보기 카드 — 1년 히트맵">
+        <img class="c3" src="./assets/card-year-dark.png" alt="한 해 돌아보기 카드 다크 톤">
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="copy">
+        <h2>기록은 가볍게</h2>
+        <p>벽 앞에서 오래 붙잡고 있을 앱이 아니에요. 난이도 색 한 번, 결과 한 번이면 끝.</p>
+        <ul class="points">
+          <li><span class="dot"><svg viewBox="0 0 24 24"><path d="M12 3l2.4 5 5.5.7-4 3.8 1 5.5L12 15.4 7.1 18l1-5.5-4-3.8 5.5-.7z"/></svg></span><span><b>난이도 색을 누르면 기록 시작.</b> Flash·완등·시도만 나눠 세고, 회차는 앱이 셉니다.</span></li>
+          <li><span class="dot"><svg viewBox="0 0 24 24"><path d="M12 3c2.5 2.5 4.8 4.9 4.8 8.1a4.8 4.8 0 1 1-9.6 0c0-1.5.6-2.8 1.6-4 .5 1 1 1.6 1.8 1.9-.3-2.2.2-4.2 1.4-6z"/></svg></span><span><b>이번 주 목표와 연속 주.</b> 홈을 열면 이번 주가 얼마나 찼는지, 몇 주째 이어지는지가 먼저 보여요.</span></li>
+          <li><span class="dot"><svg viewBox="0 0 24 24"><path d="M12 21c3.9-4 6.5-7.2 6.5-10.4a6.5 6.5 0 1 0-13 0C5.5 13.8 8.1 17 12 21z"/><circle cx="12" cy="10.4" r="2.3"/></svg></span><span><b>암장에서 GPS로 출석.</b> 랭킹은 직접 적는 난이도가 아니라 확인된 출석 일수로 겨뤄요.</span></li>
+        </ul>
+      </div>
+      <div class="phones">
+        <div class="phone"><img src="./assets/shot-home.jpg" alt="홈 화면 — 이번 주 2/3회, 31주 연속, 이번 달 달력"></div>
+        <div class="phone sm"><img src="./assets/shot-session.jpg" alt="운동 기록 화면 — 난이도 색 버튼과 결과 기록"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section flip">
+    <div class="wrap">
+      <div class="phones">
+        <div class="phone"><img src="./assets/shot-infographic.jpg" alt="인포그래픽 미리보기 — 사진 배경 위에 오늘의 기록"></div>
+        <div class="phone sm"><img src="./assets/card-month.png" alt="한 달 돌아보기 카드"></div>
+      </div>
+      <div class="copy">
+        <h2>자랑은 예쁘게</h2>
+        <p>운동이 끝나면 기록이 그대로 인포그래픽이 돼요. 사진이나 영상을 배경에 깔고, 인스타에 맞는 비율로 저장하세요.</p>
+        <ul class="points">
+          <li><span class="dot"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 15l4-4 4 4 3-3 5 5"/></svg></span><span><b>템플릿 여러 종.</b> 오늘의 기록·성공률·최고 난이도가 한 장에.</span></li>
+          <li><span class="dot"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2.5"/><path d="M4 9.5h16M8 3.5v3M16 3.5v3"/></svg></span><span><b>한 달·한 해 돌아보기 카드.</b> 다닌 날이 달력과 히트맵으로 채워지고 칭호가 붙어요. 라이트·다크 톤.</span></li>
+          <li><span class="dot"><svg viewBox="0 0 24 24"><path d="M4.8 12.2v5.4a2.8 2.8 0 0 0 2.8 2.8h8.8a2.8 2.8 0 0 0 2.8-2.8v-5.4M12 14.8V3.6M9.1 6.5L12 3.6l2.9 2.9"/></svg></span><span><b>공유 한 번에 스토리로.</b> 저장 없이 바로 인스타그램 「스토리에 추가」.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="copy">
+        <h2>혼자 말고 같이</h2>
+        <p>같은 암장, 같은 문제를 푸는 사람들. 나와 비슷한 사람의 풀이가 제일 참고가 돼요.</p>
+        <ul class="points">
+          <li><span class="dot"><svg viewBox="0 0 24 24"><rect x="3.5" y="6" width="13" height="12" rx="2.5"/><path d="M16.5 10l4-2.5v9l-4-2.5"/></svg></span><span><b>완등 영상 카탈로그.</b> 키·리치로 걸러서 나와 조건이 비슷한 사람의 무브를 봐요.</span></li>
+          <li><span class="dot"><svg viewBox="0 0 24 24"><path d="M4 20h16M6 20v-7h4v7M14 20V9h4v11M10 20V4h4v16"/></svg></span><span><b>암장별 랭킹.</b> 운동왕은 GPS 출석 일수, 활동왕은 글·댓글·영상으로.</span></li>
+          <li><span class="dot"><svg viewBox="0 0 24 24"><path d="M5 5.5h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-6l-4.5 3.5V16.5H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z"/></svg></span><span><b>암장 커뮤니티.</b> 세팅 바뀐 날, 같이 갈 사람, 오늘의 문제.</span></li>
+        </ul>
+      </div>
+      <div class="phones">
+        <div class="phone"><img src="./assets/shot-catalog.jpg" alt="카탈로그 — 키·리치 필터와 완등 영상 목록"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="end">
+    <div class="wrap">
+      <img src="./assets/pebbl-hug.png" alt="">
+      <h2>오늘 간 암장, 오늘 남기기</h2>
+      <p>로그인 없이도 바로 기록할 수 있어요. 로그인하면 기기를 바꿔도 기록이 따라와요.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://apps.apple.com/kr/app/id6793093845">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.7c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.6-1-2.6-3.8zM14 5.6c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>
+          App Store에서 받기
+        </a>
+        <a class="btn btn-ghost" href="https://play.google.com/apps/testing/com.hxp.pebbl">Android 테스트 참여</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <nav>
+        <a href="./privacy.html">개인정보 처리방침</a>
+        <a href="./terms.html">이용약관</a>
+        <a href="./community-guidelines.html">커뮤니티 가이드라인</a>
+        <a href="./support.html">문의</a>
+      </nav>
+      <span>© 2026 Hexagonal Project · Pebbl</span>
+    </div>
+  </footer>
+
 </body>
 </html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Pebbl</title>
+  <!--
+    스마트 링크 — 카드 워터마크·인스타 바이오가 가리키는 한 주소.
+    iPhone/iPad → App Store · Android → Play 비공개 테스트 옵트인 · 그 외(데스크톱) → 랜딩.
+    자바스크립트가 꺼져 있으면 아래 링크 목록이 그대로 보인다.
+  -->
+  <style>
+    body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+      background: #FFF8F0; color: #2D2D2D; }
+    .box { text-align: center; padding: 24px; }
+    p { margin: 0 0 16px; font-size: 15px; color: #8E8E93; }
+    ul { list-style: none; padding: 0; margin: 0; line-height: 2.2; }
+    a { color: #2D2D2D; font-weight: 700; }
+  </style>
+  <script>
+    (function () {
+      var ua = navigator.userAgent || '';
+      var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      var android = /Android/.test(ua);
+      var to = ios ? 'https://apps.apple.com/kr/app/id6793093845'
+             : android ? 'https://play.google.com/apps/testing/com.hxp.pebbl'
+             : './';
+      location.replace(to);
+    })();
+  </script>
+</head>
+<body>
+  <div class="box">
+    <p>Pebbl로 이동하고 있어요.</p>
+    <ul>
+      <li><a href="https://apps.apple.com/kr/app/id6793093845">App Store (iPhone)</a></li>
+      <li><a href="https://play.google.com/apps/testing/com.hxp.pebbl">Android 테스트 참여</a></li>
+      <li><a href="./">Pebbl 소개</a></li>
+    </ul>
+  </div>
+</body>
+</html>
