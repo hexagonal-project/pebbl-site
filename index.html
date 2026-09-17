@@ -7,8 +7,86 @@
   <meta name="description" content="오늘의 완등은 인포그래픽으로, 한 달·한 해는 카드 한 장으로. 볼더링 기록을 남기고, 꾸미고, 스토리에 올리세요.">
   <meta property="og:title" content="Pebbl — 볼더링 기록이 예뻐지는 앱">
   <meta property="og:description" content="오늘의 완등은 인포그래픽으로, 한 달·한 해는 카드 한 장으로.">
-  <meta property="og:image" content="https://pebbl.kr/assets/card-year.png">
+  <meta property="og:image" content="https://pebbl.kr/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pebbl.kr/">
+  <meta property="og:site_name" content="Pebbl">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pebbl — 볼더링 기록이 예뻐지는 앱">
+  <meta name="twitter:description" content="오늘의 완등은 인포그래픽으로, 한 달·한 해는 카드 한 장으로.">
+  <meta name="twitter:image" content="https://pebbl.kr/assets/og.png">
+  <link rel="canonical" href="https://pebbl.kr/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <!-- 검색 엔진 소유 확인 — 쿠기가 서치어드바이저·서치콘솔에서 코드를 받으면 아래 두 줄의 content를 채운다
+  <meta name="naver-site-verification" content="">
+  <meta name="google-site-verification" content="">
+  -->
+  <!-- 구조화 데이터 — 🔴 FAQ 문구는 본문 FAQ 섹션과 글자까지 똑같이 맞출 것 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://pebbl.kr/#organization",
+        "name": "헥사고널프로젝트",
+        "alternateName": "Hexagonal Project",
+        "url": "https://pebbl.kr/",
+        "logo": "https://pebbl.kr/assets/icon.png",
+        "email": "support@sellerside.kr"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://pebbl.kr/#website",
+        "url": "https://pebbl.kr/",
+        "name": "Pebbl",
+        "inLanguage": "ko-KR",
+        "publisher": { "@id": "https://pebbl.kr/#organization" }
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://pebbl.kr/#app",
+        "name": "Pebbl",
+        "alternateName": "페블",
+        "description": "볼더링 운동 기록 앱. 난이도 색과 결과만 누르면 기록이 되고, 운동이 끝나면 인포그래픽으로, 한 달·한 해는 돌아보기 카드로 인스타그램 스토리에 올릴 수 있습니다. GPS 출석 랭킹, 암장 커뮤니티, 완등 영상 카탈로그를 제공합니다.",
+        "applicationCategory": "SportsApplication",
+        "operatingSystem": "iOS, Android",
+        "url": "https://pebbl.kr/",
+        "installUrl": "https://apps.apple.com/kr/app/id6793093845",
+        "image": "https://pebbl.kr/assets/icon.png",
+        "screenshot": [
+          "https://pebbl.kr/assets/card-month.png",
+          "https://pebbl.kr/assets/card-year.png",
+          "https://pebbl.kr/assets/shot-home.jpg",
+          "https://pebbl.kr/assets/shot-infographic.jpg",
+          "https://pebbl.kr/assets/shot-catalog.jpg"
+        ],
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+        "inLanguage": "ko",
+        "publisher": { "@id": "https://pebbl.kr/#organization" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://pebbl.kr/#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "Pebbl은 무료인가요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "네, 전부 무료예요. 광고도 없고 결제 항목도 없어요." } },
+          { "@type": "Question", "name": "계정 없이도 쓸 수 있나요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "네. 운동 기록, 인포그래픽, 돌아보기 카드는 로그인 없이 바로 쓸 수 있어요. 로그인하면 기록이 서버에 백업돼 기기를 바꿔도 따라오고, 랭킹·커뮤니티·카탈로그를 쓸 수 있어요." } },
+          { "@type": "Question", "name": "Android에서도 쓸 수 있나요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "지금은 비공개 테스트 중이에요. 테스트 참여 방법은 Android 안내 페이지에 있어요. 영상 저장 기능은 iOS에서만 지원돼요." } },
+          { "@type": "Question", "name": "카탈로그에 올린 영상은 언제까지 보관되나요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "올린 날로부터 50일이 지나면 자동으로 삭제돼요. 그 전에 직접 지울 수도 있어요." } },
+          { "@type": "Question", "name": "우리 암장이 목록에 없어요.",
+            "acceptedAnswer": { "@type": "Answer", "text": "앱에서 암장 이름과 난이도 색을 직접 등록해 바로 기록할 수 있어요. 공식 암장 목록에 추가되길 원하면 문의로 알려주세요." } }
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="icon" href="./assets/icon.png">
   <link rel="apple-touch-icon" href="./assets/icon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
@@ -104,14 +182,51 @@
     .points .dot svg { width: 14px; height: 14px; stroke: var(--coral-deep); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .points b { color: var(--ink); font-weight: 700; }
 
-    /* 폰 프레임 — 얇은 테두리 하나. 실제 스크린샷이 주인공 */
-    .phones { display: flex; justify-content: center; gap: 22px; }
+    /* 폰 프레임 — 검정 베젤 하나 + 살짝 기울임. 스크린샷이 주인공이라 아일랜드·버튼은 안 그린다
+       (홈 스크린샷엔 시뮬레이터 아일랜드가 이미 찍혀 있다 — CSS로 또 그리면 겹친다) */
+    .phones { position: relative; display: flex; justify-content: center; gap: 22px; padding: 26px 0 18px; }
     .phone {
-      width: 250px; border-radius: 34px; overflow: hidden;
-      border: 1px solid rgba(45,45,45,.10); background: #fff;
-      box-shadow: 0 16px 44px rgba(45,45,45,.12);
+      width: 250px; padding: 9px; border-radius: 40px; background: #1C1C1E;
+      box-shadow: 0 22px 54px rgba(45,45,45,.18), inset 0 0 0 1px rgba(255,255,255,.07);
+      transform: rotate(-3deg);
     }
-    .phone.sm { width: 220px; margin-top: 48px; }
+    .phone img { border-radius: 31px; }
+    .phone.sm { width: 220px; margin-top: 52px; transform: rotate(4deg); }
+    .flip .phone { transform: rotate(3deg); }
+    .flip .phone.sm { transform: rotate(-4deg); }
+    .phones.one .phone { transform: rotate(-2deg); }
+
+    /* 떠 있는 칩 — 앱 안의 실제 문구를 폰 위에 띄운다. 흰 알약 하나, 그라데이션·글래스 없음 */
+    .chip {
+      position: absolute; z-index: 5;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 13px; border-radius: 999px; background: #fff; border: 1px solid var(--line);
+      box-shadow: 0 10px 28px rgba(45,45,45,.12);
+      font-size: 13.5px; font-weight: 700; color: var(--ink); white-space: nowrap;
+    }
+    .chip svg { width: 15px; height: 15px; stroke: var(--coral-deep); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .chip.tl { left: 0; top: 4px; }
+    .chip.tr { right: 0; top: 4px; }
+    .chip.bl { left: 0; bottom: 34px; }
+    .chip.br { right: 0; bottom: 34px; }
+
+    /* ── FAQ */
+    .faq { padding: 72px 0; border-top: 1px solid var(--line); }
+    .faq .wrap { max-width: 760px; }
+    .faq h2 { text-align: center; margin-bottom: 8px; }
+    .faq .sub { text-align: center; color: var(--gray); font-size: 16px; margin: 0 0 30px; }
+    .faq details { border-top: 1px solid var(--line); }
+    .faq details:last-of-type { border-bottom: 1px solid var(--line); }
+    .faq summary {
+      list-style: none; cursor: pointer; padding: 18px 0;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      font-weight: 700; font-size: 17px;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; color: var(--coral-deep); font-size: 24px; font-weight: 400; line-height: 1; flex: none; transition: transform .2s ease; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { margin: 0 0 20px; color: var(--gray); font-size: 15.5px; }
+    .faq details a { color: var(--coral-deep); font-weight: 700; }
 
     /* ── 마무리 */
     .end { padding: 80px 0 88px; text-align: center; }
@@ -135,9 +250,16 @@
       .section.flip .copy { order: -1; }
       .fan { height: auto; display: flex; gap: 12px; overflow-x: auto; padding: 8px 0 20px; scroll-snap-type: x mandatory; }
       .fan img { position: static; transform: none !important; width: 220px; flex: none; scroll-snap-align: center; }
-      .phones { gap: 14px; }
-      .phone { width: 46%; }
-      .phone.sm { width: 46%; margin-top: 36px; }
+      .phones { gap: 12px; padding: 22px 0 14px; }
+      .phone { width: 46%; padding: 6px; border-radius: 30px; transform: rotate(-2deg); }
+      .phone img { border-radius: 24px; }
+      .phone.sm { width: 46%; margin-top: 34px; transform: rotate(3deg); }
+      .flip .phone { transform: rotate(2deg); }
+      .flip .phone.sm { transform: rotate(-3deg); }
+      .phones.one .phone { width: 62%; }
+      .chip { font-size: 12.5px; padding: 8px 11px; }
+      .chip.bl, .chip.br { bottom: 24px; }
+      .faq { padding: 56px 0; }
       .lead { font-size: 16.5px; }
       .lead br { display: none; }
       .nav .wrap { height: 56px; }
@@ -188,8 +310,10 @@
         </ul>
       </div>
       <div class="phones">
+        <span class="chip tl"><svg viewBox="0 0 24 24"><path d="M12 3c2.5 2.5 4.8 4.9 4.8 8.1a4.8 4.8 0 1 1-9.6 0c0-1.5.6-2.8 1.6-4 .5 1 1 1.6 1.8 1.9-.3-2.2.2-4.2 1.4-6z"/></svg>이번 주 2/3회 · 31주 연속</span>
         <div class="phone"><img src="./assets/shot-home.jpg" alt="홈 화면 — 이번 주 2/3회, 31주 연속, 이번 달 달력"></div>
         <div class="phone sm"><img src="./assets/shot-session.jpg" alt="운동 기록 화면 — 난이도 색 버튼과 결과 기록"></div>
+        <span class="chip br"><svg viewBox="0 0 24 24"><path d="M12 21c3.9-4 6.5-7.2 6.5-10.4a6.5 6.5 0 1 0-13 0C5.5 13.8 8.1 17 12 21z"/><circle cx="12" cy="10.4" r="2.3"/></svg>출석 확인 · 페블짐</span>
       </div>
     </div>
   </section>
@@ -197,8 +321,10 @@
   <section class="section flip">
     <div class="wrap">
       <div class="phones">
+        <span class="chip tr"><svg viewBox="0 0 24 24"><path d="M4.8 12.2v5.4a2.8 2.8 0 0 0 2.8 2.8h8.8a2.8 2.8 0 0 0 2.8-2.8v-5.4M12 14.8V3.6M9.1 6.5L12 3.6l2.9 2.9"/></svg>스토리에 추가됨</span>
         <div class="phone"><img src="./assets/shot-infographic.jpg" alt="인포그래픽 미리보기 — 사진 배경 위에 오늘의 기록"></div>
         <div class="phone sm"><img src="./assets/card-month.png" alt="한 달 돌아보기 카드"></div>
+        <span class="chip bl"><svg viewBox="0 0 24 24"><path d="M12 3l2.4 5 5.5.7-4 3.8 1 5.5L12 15.4 7.1 18l1-5.5-4-3.8 5.5-.7z"/></svg>이 달의 칭호 · 벽에 붙어 살았어요</span>
       </div>
       <div class="copy">
         <h2>자랑은 예쁘게</h2>
@@ -223,9 +349,37 @@
           <li><span class="dot"><svg viewBox="0 0 24 24"><path d="M5 5.5h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-6l-4.5 3.5V16.5H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z"/></svg></span><span><b>암장 커뮤니티.</b> 세팅 바뀐 날, 같이 갈 사람, 오늘의 문제.</span></li>
         </ul>
       </div>
-      <div class="phones">
+      <div class="phones one">
         <div class="phone"><img src="./assets/shot-catalog.jpg" alt="카탈로그 — 키·리치 필터와 완등 영상 목록"></div>
+        <span class="chip br"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 10l7-7 7 7"/></svg>키 172 · 리치 +3으로 거르기</span>
       </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <h2>자주 묻는 질문</h2>
+      <p class="sub">받기 전에 궁금할 만한 것들이에요.</p>
+      <details>
+        <summary>Pebbl은 무료인가요?</summary>
+        <p>네, 전부 무료예요. 광고도 없고 결제 항목도 없어요.</p>
+      </details>
+      <details>
+        <summary>계정 없이도 쓸 수 있나요?</summary>
+        <p>네. 운동 기록, 인포그래픽, 돌아보기 카드는 로그인 없이 바로 쓸 수 있어요. 로그인하면 기록이 서버에 백업돼 기기를 바꿔도 따라오고, 랭킹·커뮤니티·카탈로그를 쓸 수 있어요.</p>
+      </details>
+      <details>
+        <summary>Android에서도 쓸 수 있나요?</summary>
+        <p>지금은 비공개 테스트 중이에요. 테스트 참여 방법은 <a href="./android.html">Android 안내 페이지</a>에 있어요. 영상 저장 기능은 iOS에서만 지원돼요.</p>
+      </details>
+      <details>
+        <summary>카탈로그에 올린 영상은 언제까지 보관되나요?</summary>
+        <p>올린 날로부터 50일이 지나면 자동으로 삭제돼요. 그 전에 직접 지울 수도 있어요.</p>
+      </details>
+      <details>
+        <summary>우리 암장이 목록에 없어요.</summary>
+        <p>앱에서 암장 이름과 난이도 색을 직접 등록해 바로 기록할 수 있어요. 공식 암장 목록에 추가되길 원하면 <a href="./support.html">문의</a>로 알려주세요.</p>
+      </details>
     </div>
   </section>
 
