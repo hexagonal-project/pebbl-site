@@ -121,9 +121,13 @@
     .end .cta { justify-content: center; }
 
     footer { border-top: 1px solid var(--line); padding: 28px 0 44px; font-size: 13px; color: var(--gray-2); }
-    footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; justify-content: space-between; }
+    footer .wrap { display: flex; flex-direction: column; gap: 14px; }
     footer nav { display: flex; flex-wrap: wrap; gap: 16px; }
     footer a:hover { color: var(--ink); }
+    footer .biz { display: flex; flex-wrap: wrap; gap: 4px 0; font-size: 12px; line-height: 1.6; }
+    footer .biz span { white-space: nowrap; }
+    footer .biz span:not(:last-child)::after { content: "·"; margin: 0 8px; }
+    footer .copy { font-size: 12px; }
 
     @media (max-width: 860px) {
       .hero { padding: 44px 0 24px; }
@@ -248,7 +252,13 @@
         <a href="./community-guidelines.html">커뮤니티 가이드라인</a>
         <a href="./support.html">문의</a>
       </nav>
-      <span>© 2026 Hexagonal Project · Pebbl</span>
+      <div class="biz">
+        <span>헥사고널프로젝트</span>
+        <span>대표 국은빈</span>
+        <span>사업자등록번호 276-26-01668</span>
+        <span><a href="mailto:support@sellerside.kr">support@sellerside.kr</a></span>
+      </div>
+      <span class="copy">© 2026 Hexagonal Project · Pebbl</span>
     </div>
   </footer>
 
