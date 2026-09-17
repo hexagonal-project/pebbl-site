@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Android에서 Pebbl 테스트하기</title>
+  <meta name="description" content="Pebbl Android 비공개 테스트 참여 방법 — 그룹 가입, 테스트 참여, 설치 세 단계">
+  <link rel="icon" href="./assets/icon.png">
+  <link rel="apple-touch-icon" href="./assets/icon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <!--
+    Android 안내 페이지 — go.html의 Android 분기와 랜딩 「Android 테스트 참여」가 여기로 온다.
+    Play 비공개 테스트는 Google 그룹 멤버만 옵트인할 수 있어서, 옵트인 링크로 바로 보내면
+    그룹 미가입자는 「참여 자격 없음」에서 막힌다. 그래서 두 단계를 순서대로 보여준다.
+  -->
+  <style>
+    :root {
+      --bg: #FFF8F0; --ink: #2D2D2D; --gray: #8E8E93; --gray-2: #A89F96;
+      --coral: #FF8A80; --coral-deep: #F2726A; --coral-tint: #FCE6DE; --line: #EFE2D4;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh;
+      font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+      background: var(--bg); color: var(--ink); line-height: 1.55;
+      -webkit-font-smoothing: antialiased; word-break: keep-all; overflow-wrap: anywhere;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 440px; margin: 0 auto; padding: 28px 20px 56px; }
+
+    .brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 17px; }
+    .brand img { width: 26px; height: 26px; border-radius: 7px; }
+
+    h1 { font-size: 26px; line-height: 1.3; letter-spacing: -0.01em; margin: 30px 0 10px; }
+    .lead { margin: 0 0 26px; color: var(--gray); font-size: 15px; }
+    .lead b { color: var(--ink); font-weight: 700; }
+
+    .steps { display: flex; flex-direction: column; gap: 12px; }
+    .step {
+      background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 18px 18px 16px;
+      display: grid; grid-template-columns: 34px 1fr; gap: 4px 12px;
+    }
+    .num {
+      grid-row: 1 / span 3; width: 34px; height: 34px; border-radius: 50%;
+      background: var(--coral-tint); color: var(--coral-deep); font-weight: 800; font-size: 15px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step h2 { margin: 4px 0 0; font-size: 17px; }
+    .step p { margin: 0; font-size: 14px; color: var(--gray); }
+    .step .btn { margin-top: 12px; justify-self: start; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 18px; border-radius: 999px; font-weight: 700; font-size: 15px;
+      transition: transform .12s ease;
+    }
+    .btn:active { transform: scale(.98); }
+    .btn-primary { background: var(--ink); color: #fff; }
+    .btn-ghost { color: var(--ink); background: #fff; border: 1px solid var(--line); }
+    .btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .note { margin: 22px 0 0; padding: 14px 16px; border-radius: 14px; background: var(--coral-tint); font-size: 13.5px; color: var(--ink); }
+    .note b { font-weight: 700; }
+    .fine { margin: 26px 0 0; font-size: 13px; color: var(--gray-2); line-height: 1.7; }
+    .fine a { text-decoration: underline; text-underline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="brand" href="./"><img src="./assets/icon.png" alt="">Pebbl</a>
+
+    <h1>Android에서<br>Pebbl 테스트하기</h1>
+    <p class="lead">아직 비공개 테스트 중이라 <b>순서대로 두 단계</b>가 필요해요. Google 계정으로 로그인된 상태에서 진행해 주세요.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h2>테스터 그룹 가입</h2>
+        <p>Google 그룹에 가입하면 테스트 참여 자격이 생겨요.</p>
+        <a class="btn btn-primary" href="https://groups.google.com/g/pebbl-beta" target="_blank" rel="noopener">
+          그룹 가입하기
+          <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+
+      <div class="step">
+        <div class="num">2</div>
+        <h2>테스트 참여</h2>
+        <p>가입한 계정으로 열면 「Become a tester」 버튼이 보여요. 누르면 끝.</p>
+        <a class="btn btn-primary" href="https://play.google.com/apps/testing/com.hxp.pebbl" target="_blank" rel="noopener">
+          테스트 참여하기
+          <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+
+      <div class="step">
+        <div class="num">3</div>
+        <h2>Play 스토어에서 설치</h2>
+        <p>참여가 끝나면 Play 스토어에 Pebbl이 보여요. 반영에 몇 분 걸릴 수 있어요.</p>
+        <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.hxp.pebbl" target="_blank" rel="noopener">
+          Play 스토어 열기
+          <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <p class="note"><b>2번에서 「참여 자격이 없습니다」가 뜨면</b> 1번 그룹 가입이 아직 안 된 거예요. 가입한 Google 계정과 Play 계정이 같은지도 확인해 주세요.</p>
+
+    <p class="fine">
+      영상 저장은 iOS에서만 지원돼요. 그 외 기록·인포그래픽·돌아보기 카드는 똑같이 쓸 수 있어요.<br>
+      막히는 게 있으면 <a href="mailto:support@sellerside.kr">support@sellerside.kr</a>로 알려주세요.<br>
+      iPhone이라면 <a href="https://apps.apple.com/kr/app/id6793093845">App Store</a>에서 바로 받을 수 있어요.
+    </p>
+  </div>
+</body>
+</html>

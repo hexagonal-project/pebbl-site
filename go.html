@@ -7,7 +7,8 @@
   <title>Pebbl</title>
   <!--
     스마트 링크 — 카드 워터마크·인스타 바이오가 가리키는 한 주소.
-    iPhone/iPad → App Store · Android → Play 비공개 테스트 옵트인 · 그 외(데스크톱) → 랜딩.
+    iPhone/iPad → App Store · Android → android.html(그룹 가입 → 옵트인 두 단계 안내) · 그 외(데스크톱) → 랜딩.
+    🔴 Android를 옵트인 링크로 직행시키면 그룹 미가입자는 「참여 자격 없음」에서 막힌다 (2026-09-17).
     자바스크립트가 꺼져 있으면 아래 링크 목록이 그대로 보인다.
   -->
   <style>
@@ -25,7 +26,7 @@
       var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
       var android = /Android/.test(ua);
       var to = ios ? 'https://apps.apple.com/kr/app/id6793093845'
-             : android ? 'https://play.google.com/apps/testing/com.hxp.pebbl'
+             : android ? './android.html'
              : './';
       location.replace(to);
     })();
@@ -36,7 +37,7 @@
     <p>Pebbl로 이동하고 있어요.</p>
     <ul>
       <li><a href="https://apps.apple.com/kr/app/id6793093845">App Store (iPhone)</a></li>
-      <li><a href="https://play.google.com/apps/testing/com.hxp.pebbl">Android 테스트 참여</a></li>
+      <li><a href="./android.html">Android 테스트 참여</a></li>
       <li><a href="./">Pebbl 소개</a></li>
     </ul>
   </div>
