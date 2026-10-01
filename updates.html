@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>업데이트 소식 — Pebbl</title>
+  <meta name="description" content="Pebbl 버전별 업데이트 소식. 새로 생긴 기능과 달라진 점을 버전마다 모아뒀어요.">
+  <meta property="og:title" content="업데이트 소식 — Pebbl">
+  <meta property="og:description" content="새로 생긴 기능과 달라진 점을 버전마다 모아뒀어요.">
+  <meta property="og:image" content="https://pebbl.kr/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pebbl.kr/updates.html">
+  <meta property="og:site_name" content="Pebbl">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://pebbl.kr/updates.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" href="./assets/icon.png">
+  <link rel="apple-touch-icon" href="./assets/icon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <!--
+    업데이트 소식 — 버전별 변경점을 쌓아두는 자리 (2026-10-01 신설).
+    🔴 새 버전이 나오면 두 군데를 고친다:
+      ① 이 파일 .log 맨 위에 <article class="rel" id="v1-x-y"> 카드 추가 (문구는 스토어 릴리스 노트 그대로, 「~해요」체)
+      ② index.html 히어로의 .news 띠 — 문구와 #앵커
+    그림은 최신 버전 카드에만 한 장. 다음 버전이 나오면 이전 카드의 .shot은 빼도 된다.
+  -->
+  <style>
+    /* 팔레트·셸은 index.html과 같다 */
+    :root {
+      --bg: #FFF8F0;
+      --ink: #2D2D2D;
+      --gray: #8E8E93;
+      --gray-2: #A89F96;
+      --coral: #FF8A80;
+      --coral-deep: #F2726A;
+      --coral-tint: #FCE6DE;
+      --line: #EFE2D4;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── 상단 바 */
+    .nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255, 248, 240, 0.86);
+      backdrop-filter: saturate(160%) blur(10px);
+      -webkit-backdrop-filter: saturate(160%) blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .brand { display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 19px; letter-spacing: -0.2px; }
+    .brand img { width: 30px; height: 30px; border-radius: 8px; }
+    .nav-cta {
+      font-size: 14px; font-weight: 700; color: var(--coral-deep);
+      background: var(--coral-tint); padding: 8px 14px; border-radius: 999px;
+    }
+
+    /* ── 머리말 */
+    .head { padding: 64px 0 28px; }
+    .head .wrap, .log .wrap { max-width: 760px; }
+    .eyebrow { font-size: 14px; font-weight: 700; color: var(--coral-deep); letter-spacing: 0.2px; margin: 0 0 12px; }
+    h1 { font-size: clamp(32px, 5vw, 44px); line-height: 1.2; letter-spacing: -0.8px; margin: 0 0 12px; font-weight: 800; }
+    .lead { font-size: 17px; color: var(--gray); margin: 0; }
+
+    /* ── 버전 카드 — android.html .step과 같은 톤 */
+    .log { padding: 8px 0 40px; }
+    .log .wrap { display: flex; flex-direction: column; gap: 14px; }
+    .rel {
+      background: #fff; border: 1px solid var(--line); border-radius: 18px;
+      padding: 22px 22px 20px; scroll-margin-top: 76px;
+    }
+    .meta { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; }
+    .ver {
+      font-size: 13px; font-weight: 800; color: var(--coral-deep);
+      background: var(--coral-tint); padding: 4px 10px; border-radius: 999px;
+    }
+    .rel.latest .ver { background: var(--coral-deep); color: #fff; }
+    .date { font-size: 13px; color: var(--gray-2); font-variant-numeric: tabular-nums; }
+    .rel h2 { font-size: 20px; line-height: 1.35; letter-spacing: -0.3px; margin: 0 0 4px; font-weight: 800; }
+    .rel h3 { font-size: 15.5px; margin: 18px 0 4px; font-weight: 700; }
+    .rel p { margin: 0; font-size: 15px; color: var(--gray); }
+    .rel ul { margin: 8px 0 0; padding: 0 0 0 18px; font-size: 15px; color: var(--gray); }
+    .rel li + li { margin-top: 4px; }
+    .rel li::marker { color: var(--coral); }
+
+    /* 최신 카드의 그림 — index.html .phone 베젤 */
+    .shot { display: flex; justify-content: center; padding: 22px 0 6px; }
+    .phone {
+      width: 230px; padding: 8px; border-radius: 36px; background: #1C1C1E;
+      box-shadow: 0 18px 44px rgba(45,45,45,.16), inset 0 0 0 1px rgba(255,255,255,.07);
+    }
+    .phone img { border-radius: 28px; width: 100%; height: auto; }
+    .shot figcaption { display: none; }
+
+    /* ── 마무리 */
+    .end { padding: 48px 0 80px; text-align: center; }
+    .end p { color: var(--gray); margin: 0 0 20px; }
+    .cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 14px 22px; border-radius: 999px; font-weight: 700; font-size: 16px;
+      transition: transform .12s ease, opacity .12s ease;
+    }
+    .btn:active { transform: scale(.98); }
+    .btn-primary { background: var(--ink); color: #fff; }
+    .btn-primary svg { width: 18px; height: 18px; fill: #fff; }
+    .btn-ghost { color: var(--ink); background: #fff; border: 1px solid var(--line); }
+
+    footer { border-top: 1px solid var(--line); padding: 28px 0 44px; font-size: 13px; color: var(--gray-2); }
+    footer .wrap { display: flex; flex-direction: column; gap: 14px; }
+    footer nav { display: flex; flex-wrap: wrap; gap: 16px; }
+    footer a:hover { color: var(--ink); }
+    footer .biz { display: flex; flex-wrap: wrap; gap: 4px 0; font-size: 12px; line-height: 1.6; }
+    footer .biz span { white-space: nowrap; }
+    footer .biz span:not(:last-child)::after { content: "·"; margin: 0 8px; }
+    footer .copy { font-size: 12px; }
+
+    @media (max-width: 860px) {
+      .head { padding: 40px 0 22px; }
+      .rel { padding: 20px 18px 18px; }
+      .phone { width: 200px; padding: 6px; border-radius: 30px; }
+      .phone img { border-radius: 24px; }
+      .nav .wrap { height: 56px; }
+      .wrap { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="./"><img src="./assets/icon.png" alt="">Pebbl</a>
+      <a class="nav-cta" href="https://apps.apple.com/kr/app/id6793093845">App Store</a>
+    </div>
+  </header>
+
+  <section class="head">
+    <div class="wrap">
+      <p class="eyebrow">업데이트 소식</p>
+      <h1>Pebbl은 이렇게 자라고 있어요</h1>
+      <p class="lead">새로 생긴 기능과 달라진 점을 버전마다 모아뒀어요. 날짜는 App Store 출시일 기준이에요.</p>
+    </div>
+  </section>
+
+  <main class="log">
+    <div class="wrap">
+
+      <article class="rel latest" id="v1-1-2">
+        <div class="meta"><span class="ver">v1.1.2</span><span class="date">2026.10.01</span></div>
+        <h2>새 인포그래픽 템플릿 「그래피티」가 추가됐어요</h2>
+        <p>콘크리트 벽에 스프레이로 쓴 듯한 스타일로, 사진이나 영상을 함께 담을 수 있어요.</p>
+        <figure class="shot">
+          <div class="phone"><img src="./assets/update-v112-graffiti.jpg" alt="그래피티 템플릿 — 콘크리트 벽 위에 스프레이 글씨로 쓴 오늘의 기록" width="720" height="1280" loading="lazy"></div>
+          <figcaption>그래피티 템플릿</figcaption>
+        </figure>
+        <ul>
+          <li>한 마디 글씨가 템플릿마다 달라졌어요 — 템플릿 분위기에 맞는 글씨체로 바뀝니다</li>
+          <li>커뮤니티가 「공지」와 「이야기」로 나뉘었어요</li>
+          <li>돌아보기 카드 칭호 아이콘을 새로 다듬었어요</li>
+          <li>카탈로그에 올릴 영상의 길이를 고를 수 있어요</li>
+          <li>최고 난이도를 V등급 대신 색 이름으로 보여줘요</li>
+          <li>성장 탭에서 암장별로 기록을 볼 수 있어요</li>
+          <li>그 밖에 자잘한 표시 오류를 고쳤어요</li>
+        </ul>
+      </article>
+
+      <article class="rel" id="v1-1-1">
+        <div class="meta"><span class="ver">v1.1.1</span><span class="date">2026.09.24</span></div>
+        <h2>설정 화면을 새로 단장했어요</h2>
+        <p>내 기록 · 앱 · 계정으로 묶고, 화면이 작은 기기에서도 끝까지 스크롤돼요.</p>
+        <h3>즉석사진 템플릿이 예뻐졌어요</h3>
+        <p>렌즈 링, 폴라로이드, 빨래집게를 페블과 같은 질감으로 다시 그렸어요. 페블이 스탯마다 다른 포즈로 등장하고, 가장 어려웠던 난이도는 색 이름으로 보여줘요.</p>
+        <h3>문제의 '느낌'이 늘었어요</h3>
+        <p>파워, 리치, 볼륨이 추가됐어요. 물음표를 누르면 각 느낌의 설명을 볼 수 있고, 직벽에서 시작해 살짝 기우는 벽처럼 섞인 벽은 둘 다 골라도 돼요.</p>
+        <h3>그 밖에</h3>
+        <ul>
+          <li>탭바 아이콘 색을 앱 톤에 맞췄어요</li>
+        </ul>
+      </article>
+
+      <article class="rel" id="v1-1-0">
+        <div class="meta"><span class="ver">v1.1.0</span><span class="date">2026.09.22</span></div>
+        <h2>Pebbl이 새 옷을 입었어요</h2>
+        <p>화면 열 개를 다시 그리고 서체를 바꿨어요.</p>
+        <h3>새로워진 화면</h3>
+        <p>홈, 운동 기록, 요약, 히스토리, 랭킹, 커뮤니티, 글쓰기, 카탈로그, 인포그래픽 편집, 최근 기록. 눈에 잘 들어오는 서체와 따뜻한 색으로 정리했어요. 페블 캐릭터도 곳곳에서 만날 수 있어요.</p>
+        <h3>문제의 '느낌'을 남길 수 있어요</h3>
+        <p>기록할 때 슬랩, 오버행, 다이노, 크림프처럼 그 문제의 느낌을 골라 두세요. 카탈로그에서는 느낌으로 영상을 거를 수 있어요.</p>
+        <h3>카탈로그에 팁과 '몇 트'가 생겼어요</h3>
+        <p>영상을 올릴 때 한 줄 팁과 몇 트에 완등했는지(Flash, 2~3트…)를 적을 수 있어요. 키 구간을 고르면 나와 비슷한 사람의 영상만 모아 볼 수 있어요.</p>
+        <h3>성장 탭이 더 자세해졌어요</h3>
+        <p>지금까지 기록, 주별 운동 횟수, 주별 최고 난이도, 암장별, 요일별 패턴을 볼 수 있어요.</p>
+        <h3>그 밖에</h3>
+        <ul>
+          <li>최근 기록에서 시도 횟수를 직접 고칠 수 있고, 완등 표기가 'N트'로 바뀌었어요</li>
+          <li>운동 요약에서 인포그래픽 공유가 더 눈에 띄게, 기록 수정은 행을 탭하면 돼요</li>
+          <li>자잘한 오류 여섯 가지를 고쳤어요</li>
+        </ul>
+      </article>
+
+      <article class="rel" id="v1-0-10">
+        <div class="meta"><span class="ver">v1.0.10</span><span class="date">2026.09.18</span></div>
+        <h2>홈에 '이번 주'가 생겼어요</h2>
+        <p>이번 주에 몇 번 갔는지 점으로 보여주고, 몇 주째 계속 다니고 있는지도 함께 보여줘요. 점을 누르면 한 주 목표(1~7회)를 정할 수 있고, 채우면 색이 바뀌어요.</p>
+        <h3>한 해 카드에서 연도를 넘길 수 있어요</h3>
+        <p>'한 해' 카드 위의 화살표로 지난해 카드도 만들 수 있어요.</p>
+        <h3>달이 바뀌면 홈에서 알려드려요</h3>
+        <p>매달 초 며칠 동안 '지난달 카드 만들기' 배너가 떠요. 12월과 1월엔 한 해 카드로 안내해요.</p>
+        <h3>사용법을 새로 썼어요</h3>
+        <p>돌아보기 카드, 랭킹, 카탈로그 등 그동안 늘어난 기능에 맞춰 설정 &gt; 사용법을 다시 정리했어요. 아이콘도 새로 그렸어요.</p>
+        <h3>그 밖에</h3>
+        <ul>
+          <li>카드와 인포그래픽의 워터마크에 pebbl.kr 주소가 들어가요</li>
+          <li>설정에서 친구에게 앱 링크를 보낼 수 있어요</li>
+        </ul>
+      </article>
+
+      <article class="rel" id="v1-0-9">
+        <div class="meta"><span class="ver">v1.0.9</span><span class="date">2026.09.17</span></div>
+        <h2>한 달, 한 해를 카드 한 장으로 돌아봐요</h2>
+        <p>홈의 '한 달 돌아보기'에서 이번 달 달력 카드를, '한 해' 탭에서 올해의 히트맵 카드를 만들 수 있어요. 운동한 날과 다닌 암장, 이 달의 칭호가 담긴 세로 카드라 인스타그램 스토리에 그대로 올리기 좋아요. 라이트·다크 두 가지 톤 중 고를 수 있고, 저장하거나 바로 공유할 수 있어요.</p>
+        <h3>성장 차트가 새로워졌어요</h3>
+        <p>기록 탭의 차트 4종을 다시 그렸어요. 성공률은 민트, 난이도는 코랄로 나눠 한눈에 읽히고, 난이도 추이는 V등급을 축으로 보여줘요.</p>
+        <h3>암장 정보에 주소가 생겼어요</h3>
+        <p>암장 관리 화면에서 주소를 볼 수 있고, 잘못된 정보는 '알리기'로 바로 알려줄 수 있어요.</p>
+        <h3>랭킹을 처음 볼 때 안내가 떠요</h3>
+        <p>운동왕·활동왕이 어떻게 계산되는지 처음 한 번 알려드려요. 제목 옆 물음표를 누르면 언제든 다시 볼 수 있어요.</p>
+        <h3>그 밖에</h3>
+        <ul>
+          <li>인포그래픽 공유 버튼 디자인을 다듬었어요</li>
+          <li>여러 암장의 같은 난이도가 성장 차트에 따로 표시되던 문제를 고쳤어요</li>
+        </ul>
+      </article>
+
+      <article class="rel" id="v1-0-8">
+        <div class="meta"><span class="ver">v1.0.8</span><span class="date">2026.09.14</span></div>
+        <h2>랭킹이 새로워졌어요</h2>
+        <p>이제 랭킹이 두 가지로 나뉘어요.</p>
+        <ul>
+          <li><b>운동왕</b> — GPS로 인증된 '출석 일수'로 겨뤄요</li>
+          <li><b>활동왕</b> — 글, 댓글, 받은 좋아요, 영상 업로드로 겨뤄요</li>
+        </ul>
+        <p style="margin-top:10px">난이도와 완등 기록은 랭킹에서 빠졌어요. 직접 적는 값이라 서로 비교하기엔 맞지 않았거든요. 대신 인포그래픽과 기록 화면에서는 그대로 주인공이에요. 기준이 바뀌면서 기존 포인트는 초기화됐어요.</p>
+        <h3>배경 영상을 30초까지 쓸 수 있어요</h3>
+        <p>10초로는 완등 한 번을 담기 어렵다는 의견이 많았어요.</p>
+        <h3>가로로 찍은 영상도 잘리지 않아요</h3>
+        <p>예전에는 가로 영상을 넣으면 좌우가 크게 잘리고 화질도 떨어졌어요. 이제 영상을 그대로 두고 위아래에 여백을 넣어 저장해요.</p>
+        <h3>설정에 '지금 동기화'가 생겼어요</h3>
+        <p>다른 기기에서 기록한 운동을 바로 가져올 수 있어요.</p>
+      </article>
+
+      <article class="rel" id="v1-0-7">
+        <div class="meta"><span class="ver">v1.0.7</span><span class="date">2026.09.09</span></div>
+        <h2>인포그래픽을 영상으로 저장할 수 있어요</h2>
+        <p>운동 기록 인포그래픽을 완등 영상 위에 얹어 하나의 영상으로 저장해요. 인스타그램 게시물에 그대로 올릴 수 있어요.</p>
+        <ul>
+          <li>갤러리에서 클립을 고르면 원하는 구간을 잘라 쓸 수 있어요</li>
+          <li>배경 영상은 확대·이동으로 위치를 맞출 수 있어요</li>
+          <li>게시물 비율(3:4)에 맞춰 저장돼 위아래가 잘리지 않아요</li>
+        </ul>
+        <h3>공식 암장 10곳이 추가됐어요</h3>
+        <p>그루트 클라이밍, 피커스클라이밍(구로·신촌·종로), 클라이밍파크(강남·신논현·종로), 웨이브락(서면·부산대·남천). 부산 지역 암장이 처음 추가됐어요.</p>
+        <h3>카탈로그가 편해졌어요</h3>
+        <ul>
+          <li>암장을 목록에서 골라요. 암장이 많아져도 화면이 밀리지 않아요</li>
+          <li>벽별로 영상을 골라 볼 수 있어요</li>
+        </ul>
+        <h3>이런 것들을 고쳤어요</h3>
+        <ul>
+          <li>저장 실패, 입력 오류 같은 안내가 화면에 뜨지 않던 문제를 고쳤어요</li>
+          <li>커뮤니티 목록을 스크롤할 때 제목이 상단에 고정돼요</li>
+        </ul>
+      </article>
+
+      <article class="rel" id="v1-0-6">
+        <div class="meta"><span class="ver">v1.0.6</span><span class="date">2026.09.01</span></div>
+        <h2>완등 영상 카탈로그가 열렸어요</h2>
+        <ul>
+          <li>나와 비슷한 키·리치의 클라이머가 같은 문제를 어떻게 풀었는지 찾아볼 수 있어요. 암장과 키 구간으로 골라 보세요.</li>
+          <li>완등 영상을 올리면 같은 문제를 붙는 사람들에게 도움이 돼요. 60초까지 올릴 수 있고, 큰 영상은 자동으로 압축돼요.</li>
+          <li>부적절한 영상은 신고하거나 해당 이용자를 차단할 수 있어요.</li>
+        </ul>
+        <h3>그 밖에</h3>
+        <ul>
+          <li>암장 정보 화면이 새로워졌어요. 난이도를 V등급으로 보여주고 벽 목록도 함께 확인할 수 있어요.</li>
+          <li>「내 암장」에서 메인 암장과 즐겨찾기를 한눈에 관리할 수 있어요.</li>
+          <li>커뮤니티 공지가 목록 위에 고정돼요.</li>
+          <li>설정에서 이용약관·개인정보 처리방침·커뮤니티 가이드라인을 바로 열 수 있어요.</li>
+        </ul>
+      </article>
+
+      <article class="rel" id="v1-0-5">
+        <div class="meta"><span class="ver">v1.0.5</span><span class="date">2026.08.27</span></div>
+        <h2>운동 기록이 훨씬 빨라졌어요</h2>
+        <ul>
+          <li>암장 「등록」 단계를 없앴어요 — 운동 시작에서 바로 고르면 돼요. 자주 가는 곳은 별 아이콘으로 즐겨찾기에 두세요.</li>
+          <li>문제를 기록할 때 시도 횟수를 앱이 세줘요. 결과 버튼을 누르면 바로 저장돼 연속으로 입력할 수 있어요.</li>
+          <li>난이도 버튼을 새로 다듬고, 오늘 그 난이도를 몇 개 기록했는지 버튼 위에 숫자로 보여줘요.</li>
+          <li>설정에 「사용법」을 추가했어요.</li>
+          <li>인포그래픽 저장 버튼을 하나로 합쳤어요.</li>
+        </ul>
+        <h3>고친 점</h3>
+        <ul>
+          <li>오전에 한 운동이 캘린더에서 전날로 표시되던 문제를 고쳤어요.</li>
+          <li>일부 암장 이름이 인포그래픽에서 한글로 나오던 문제를 고쳤어요.</li>
+        </ul>
+      </article>
+
+      <article class="rel" id="v1-0-4">
+        <div class="meta"><span class="ver">v1.0.4</span><span class="date">2026.08.18</span></div>
+        <h2>기록이 어긋나거나 저장이 깨지던 문제들을 크게 손봤어요</h2>
+        <h3>새로워진 점</h3>
+        <ul>
+          <li>「즉석사진」 템플릿이 추가돼 인포그래픽이 7종이 됐어요</li>
+          <li>인포그래픽에 표시할 난이도를 직접 고를 수 있어요 (데이터 탭)</li>
+          <li>프로필에 키와 리치를 입력할 수 있어요 (선택) — 완등 영상 기능에서 나와 비슷한 체형의 클라이머를 찾는 데 쓰여요</li>
+        </ul>
+        <h3>고친 점</h3>
+        <ul>
+          <li>세로로 찍은 배경 사진이 저장하면 옆으로 눕던 문제</li>
+          <li>요소 정렬과 간격 맞추기가 동작하지 않던 문제</li>
+          <li>요소를 3개 이상 선택하면 완료 버튼이 사라져 빠져나갈 수 없던 문제</li>
+          <li>배경 사진을 넣을 때 앱이 종료되던 문제</li>
+          <li>암장을 삭제하면 기존 기록의 난이도와 포인트가 어긋나던 문제 (이미 어긋난 기록은 앱을 켜면 자동으로 복구돼요)</li>
+          <li>다른 계정으로 다시 로그인할 수 없던 문제</li>
+          <li>난이도를 많이 등록한 날 인포그래픽 그래프가 카드를 벗어나던 문제</li>
+        </ul>
+        <p style="margin-top:10px">템플릿 기본 배치와 암장 이름 표시도 함께 다듬었어요.</p>
+      </article>
+
+    </div>
+  </main>
+
+  <section class="end">
+    <div class="wrap">
+      <p>아직 안 써보셨다면, 오늘 간 암장부터 남겨보세요.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://apps.apple.com/kr/app/id6793093845">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.7c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.6-1-2.6-3.8zM14 5.6c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>
+          App Store에서 받기
+        </a>
+        <a class="btn btn-ghost" href="./android.html">Android 테스트 참여</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <nav>
+        <a href="./updates.html">업데이트 소식</a>
+        <a href="./privacy.html">개인정보 처리방침</a>
+        <a href="./terms.html">이용약관</a>
+        <a href="./community-guidelines.html">커뮤니티 가이드라인</a>
+        <a href="./support.html">문의</a>
+      </nav>
+      <div class="biz">
+        <span>헥사고널프로젝트</span>
+        <span>대표 국은빈</span>
+        <span>사업자등록번호 276-26-01668</span>
+        <span><a href="mailto:support@sellerside.kr">support@sellerside.kr</a></span>
+      </div>
+      <span class="copy">© 2026 Hexagonal Project · Pebbl</span>
+    </div>
+  </footer>
+
+</body>
+</html>
