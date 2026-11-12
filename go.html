@@ -9,6 +9,9 @@
     스마트 링크 — 카드 워터마크·인스타 바이오가 가리키는 한 주소.
     iPhone/iPad → App Store · Android → Google Play(1.2.0 정식 출시, 2026-10) · 그 외(데스크톱) → 랜딩.
     자바스크립트가 꺼져 있으면 아래 링크 목록이 그대로 보인다.
+    🆕 2026-11 광고 캠페인 꼬리표: go?c=<캠페인 이름>(영문·숫자·-·_ 40자) → 스토어 링크에 캠페인을 붙인다.
+      App Store = App Analytics 캠페인 링크 형식(pt = 팀 제공자 ID · ct = 캠페인) · Google Play = 설치 리퍼러 UTM(획득 보고서).
+      c가 없으면 예전과 똑같은 주소로 간다(카드 워터마크·인스타 소개 링크는 그대로).
   -->
   <style>
     body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
@@ -20,13 +23,20 @@
     a { color: #2D2D2D; font-weight: 700; }
   </style>
   <script>
+    var APPSTORE = 'https://apps.apple.com/kr/app/id6793093845';
+    var PLAY = 'https://play.google.com/store/apps/details?id=com.hxp.pebbl';
+    var PT = '129174125';  // App Store Connect 앱 분석 → 캠페인 링크 생성기의 pt
+    var m = /[?&]c=([A-Za-z0-9_-]{1,40})(&|$)/.exec(location.search);
+    var c = m ? m[1] : '';
+    if (c) {
+      APPSTORE = 'https://apps.apple.com/app/apple-store/id6793093845?pt=' + PT + '&ct=' + c + '&mt=8';
+      PLAY += '&referrer=' + encodeURIComponent('utm_source=instagram&utm_medium=ad&utm_campaign=' + c);
+    }
     (function () {
       var ua = navigator.userAgent || '';
       var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
       var android = /Android/.test(ua);
-      var to = ios ? 'https://apps.apple.com/kr/app/id6793093845'
-             : android ? 'https://play.google.com/store/apps/details?id=com.hxp.pebbl'
-             : './';
+      var to = ios ? APPSTORE : android ? PLAY : './';
       location.replace(to);
     })();
   </script>
